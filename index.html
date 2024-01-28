@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            margin: auto;
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="submit"], button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover, button:hover {
+            background-color: #0056b3;
+        }
+        .role-selector {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        .attribution {
+            margin-top: 20px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function handleLogin() {
+            var selectedRole = document.querySelector('input[name="role"]:checked').value;
+            switch (selectedRole) {
+                case 'borrower':
+                    window.location.href = '/borrower.html';
+                    break;
+                case 'lender':
+                    window.location.href = '/lender.html';
+                    break;
+                case 'admin':
+                    window.location.href = '/admin-dashboard.html';
+                    break;
+            }
+            return false; // Prevent default form submission
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+
+        <div class="role-selector">
+            <input type="radio" id="admin" name="role" value="admin">
+            <label for="admin">Admin</label><br>
+
+            <input type="radio" id="borrower" name="role" value="borrower">
+            <label for="borrower">Borrower</label><br>
+
+            <input type="radio" id="lender" name="role" value="lender">
+            <label for="lender">Lender</label>
+        </div>
+
+        <form action="/submit-your-login-form" method="post" onsubmit="return handleLogin();">
+            <input type="email" id="email" name="email" placeholder="Email" required><br>
+            <input type="password" id="password" name="password" placeholder="Password" required><br>
+            <input type="submit" value="Login">
+        </form>
+
+        <button onclick="location.href='/register-page-url'">Register</button>
+        <div class="attribution">
+            Code written by <a href="https://github.com/Shubhamojha09" target="_blank">Shubham Ojha</a>
+        </div>
+    </div>
+</body>
+</html>
